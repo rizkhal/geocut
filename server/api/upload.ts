@@ -35,8 +35,8 @@ export default defineEventHandler(async (event) => {
 
     if (!geojson || !geojson.features) {
       throw createError({
-        status: 400,
-        message: "Invalid geojson format",
+        statusCode: 400,
+        statusMessage: "Invalid geojson format",
       });
     }
 
@@ -62,9 +62,11 @@ export default defineEventHandler(async (event) => {
       },
     };
   } catch (error) {
+    console.log(error);
+
     throw createError({
-      status: 500,
-      message: "Something went wrong",
+      statusCode: 500,
+      statusMessage: "Something went wrong",
     });
   }
 });
