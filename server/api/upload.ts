@@ -61,12 +61,13 @@ export default defineEventHandler(async (event) => {
         size: stats.size,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
 
     throw createError({
       statusCode: 500,
       statusMessage: "Something went wrong",
+      stack: error.stack,
     });
   }
 });
